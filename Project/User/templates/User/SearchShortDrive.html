@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include "User/Links.html" %}
+</head>
+<body>
+    {% include "User/Header.html" %}
+    <br>
+    <br>
+    <form action="" method="post" enctype="multipart/form-data" id="searchPackage" data-vehicle-url="{% url 'user:ajax_load_vehmodel' %}">
+       {% csrf_token %}  
+    <table cellpadding="10" style="border-collapse: collapse;" align="center" border="1">
+        <tr>
+            <td colspan="12" align="center">Driver Requirements</td>
+        </tr>
+        <tr>
+            <td>District</td>
+            <td>
+                <select id="slctDistrict" name="slctDistrict">
+                    <option value="0">---Select---</option>
+                    {% for districtData in district %}
+                    <option value="{{districtData.id}}">{{ districtData.DistrictName }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>Vehicle Type</td>
+            <td>
+                <select id="slctVehicleType" name="slctVehicleType" >
+                    <option value="0">---Select---</option>
+                    {% for vehicletypeData in vehicletype %}
+                    <option value="{{vehicletypeData.id}}">{{ vehicletypeData.VehicleTypes }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+            <td>Vehicle Model</td>
+            <td>
+                <select id="slctVehicleModel" name="slctVehicleModel">
+                    <option value="0">---Select---</option>
+                </select>
+            </td>
+
+          
+
+            <td>Short Drive Purposes</td>
+            <td>
+                <select id="slctPackPurposes" name="slctPackPurposes">
+                    <option value="0">---Select---</option>
+                    {% for shortdrivepurposesData in shortdrivepurposes %}
+                    <option value="{{shortdrivepurposesData.id}}">{{ shortdrivepurposesData.ShortTravelingPurposes }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+            <td>Driving Hours</td>
+            <td>
+                <select id="slctDrivingHours" name="slctDrivingHours">
+                    <option value="0">---Select---</option>
+                    {% for drivingHoursData in drivingHours %}
+                    <option value="{{drivingHoursData.id}}">{{ drivingHoursData.Time }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+            <td>Driving Modes</td>
+            <td>
+                <select id="slctDrivingModes" name="slctDrivingModes">
+                    <option value="0">---Select---</option>
+                    {% for drivingModeData in drivingMode %}
+                    <option value="{{drivingModeData.id}}">{{ drivingModeData.DriveModes }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+            <td align="right">
+                <input type="submit" name="btnSearch" value="Filter Now">
+             </td>
+        </tr>
+        <!-- <tr>
+            <td colspan="4" align="center">Date Slot</td>
+            <td colspan="13" align="center">Time Slot</td>
+        </tr> -->
+        <tr>
+            <!-- <td>From</td>
+            <td><input type="date" name="txtFromDate"></td>
+            <td>To</td>
+            <td><input type="date" name="txtToDate"></td>
+            
+            <td>From</td>
+            <td><input type="time" name="txtFromTime"></td>
+            <td>To</td>
+            
+            <td colspan="4"><input type="time" name="txtToTime"></td> -->
+            
+          
+        </tr>
+    </table>
+</form>
+<br>
+<table align="center" cellpadding="10" width="100%" border="1" style="border-collapse:collapse;">
+    <tr>
+        <th>Sl No</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Contact Number</th>
+        <th>Email</th>
+        <th>District</th>
+        <th></th>
+    </tr>
+{% for Driver in driversDetails %}
+    <tr>
+        <td>{{ forloop.counter  }}</td>
+        <td>{{ Driver.SeekerID.SeekerName }}</td>
+        <td>{{ Driver.SeekerID.SeekerGender }}</td>
+        <td>{{ Driver.SeekerID.SeekerPhone }}</td>
+        <td>{{ Driver.SeekerID.SeekerEmail }}</td>
+        <td>{{ Driver.SeekerID.District.DistrictName }}</td>
+        <td><a href="{% url 'user:book-short-drive' Driver.id %}">Book Now</a></td>
+{% endfor %}
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#slctVehicleType").change(function () {
+       
+  var url = $("#searchPackage").attr("data-vehicle-url");  // get the url of the `load_vehiclemodel` view
+  var vehicletypeId = $(this).val();  // get the selected vehicletype ID from the HTML input
+       
+  $.ajax({                       // initialize an AJAX request
+    url: url,                    // set the url of the request (= localhost:8000/Seeker/ajax/load-vehiclemodel/)
+    data: {
+      'vehtype': vehicletypeId     // add the vehicletype id to the GET parameters
+    },
+    success: function (data) {   // `data` is the return of the `load_vehiclemodel` view function
+      $("#slctVehicleModel").html(data);  // replace the contents of the vehiclemodel input with the data that came from the server
+    }
+  });
+
+});
+</script>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+{% include "User/Footer.html" %}
+</body>
+</html>

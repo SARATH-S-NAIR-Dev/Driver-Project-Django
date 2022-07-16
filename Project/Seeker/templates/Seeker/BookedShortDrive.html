@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivo Seeker Profile</title>
+    {% include "Seeker/Links.html" %}
+</head>
+<body>
+    {% include "Seeker/Header.html" %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+        <tr>
+            <td>User</td>
+            <td>Booking Date</td>
+            <td>Booking Time</td>
+            <td>Picking Date</td>
+            <td>Picking Time</td>
+            <td>Picking Location</td>
+            <td>Droping Time</td>
+            <td>Droping Location</td>
+            <td>Return</td>
+            <td>Minimum Amount</td> 
+            <td>VehicleModel</td>
+            <td>Purpose</td>
+            <td>Actual Amount</td>
+            <td>Work Completion Remarks</td>
+            <td>More Info</td>
+            <td colspan="2">Action</td>
+            
+        </tr>
+        
+        {% for data in shortdrive %}
+        <tr>
+            <td>{{data.UserID.UserName}},                                        
+                {{data.UserID.UserPhone}},
+                {{data.UserID.UserEmail}}
+            </td>
+            <td>{{data.ShortDriveBookingDate}}</td>
+            <td>{{data.ShortDriveBookingTime}}</td>
+            <td>{{data.ShortDriveBookingPickingDate}}</td>
+            <td>{{data.ShortDriveBookingPickingTime}}</td>
+            <td>{{data.ShortDriveBookingPickingLocation}}</td>
+            <td>{{data.ShortDriveBookingDropingTime}}</td>
+            <td>{{data.ShortDriveBookingDropLocation}}</td>
+            <td>{{data.ShortDriveBookingIsReturn}}</td>
+            <td>{{data.ShortDriveBookingAmount}}</td>
+            <td>{{data.ShortDriveVehicleModel}}</td>
+            <td>{{data.ShortDrivePurpose}}</td>
+            <td>{{ data.actualtotalamount }}</td>
+            <td>{{ data.workcompletionremarks }}</td>
+            <td>{{data.moreinfo}}</td>
+            {% if data.Status == 0 %}
+            <td><a href="{% url 'seeker:accept-shortdrive' data.id %}">Accept</a></td>
+            {% elif data.Status == 2 %}
+            <td>No Action</td>
+            {% else %}
+            <td><span class="link-success">Accepted</span></td>
+            <td><a href="{% url 'seeker:shortdrive-completed' data.id %}">Drive Complete ??</a></td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+    </table>   
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% include "Seeker/Footer.html" %}
+</body>
+</html>

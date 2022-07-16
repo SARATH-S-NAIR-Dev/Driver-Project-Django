@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivo Seeker Profile</title>
+    {% include "Seeker/Links.html" %}
+</head>
+<body>
+    {% include "Seeker/Header.html" %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+        <tr>
+            <td>Name</td>
+            <td>{{ seekerData.SeekerName }}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>{{ seekerData.SeekerGender }}</td>
+        </tr>
+        <tr>
+            <td>DOB</td>
+            <td>{{ seekerData.SeekerDob }}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>{{ seekerData.SeekerPhone }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{ seekerData.SeekerEmail }}</td>
+        </tr>
+        <tr>
+            <td>District</td>
+            <td>{{ seekerData.District }}</td>
+        </tr>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% include "Seeker/Footer.html" %}
+</body>
+</html>

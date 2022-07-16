@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+        <tr>
+            <td>Name</td>
+            <td>{{ seekerData.SeekerName }}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>{{ seekerData.SeekerGender }}</td>
+        </tr>
+        <tr>
+            <td>DOB</td>
+            <td>{{ seekerData.SeekerDob }}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>{{ seekerData.SeekerPhone }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{ seekerData.SeekerEmail }}</td>
+        </tr>
+        <tr>
+            <td>District</td>
+            <td>{{ seekerData.District }}</td>
+        </tr>
+        <tr>
+            <td>License</td>
+            <td>{{ seekerRegistrationdata.SeekerLicenseNumber }}</td>
+        </tr>
+        <tr>
+            <td>Aadhar</td>
+            <td>{{ seekerRegistrationdata.SeekerAadharNumber }}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>{{ seekerRegistrationdata.SeekerAdress }}</td>
+        </tr>
+        <tr>
+            <td>Disability</td>
+            <td>{{ seekerRegistrationdata.SeekerDisability }}</td>
+        </tr>
+        <tr>
+            <td>Badge</td>
+            <td>{{ seekerRegistrationdata.SeekerBadge }}</td>
+        </tr>
+        <tr>
+            <td>Offence</td>
+            <td>{{ seekerRegistrationdata.SeekerOffence }}</td>
+        </tr>
+        <tr>
+            <td>Restriction</td>
+            <td>{{ seekerRegistrationdata.SeekerRestriction }}</td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Accept">
+                </form>
+            </td>
+        </tr>
+    </table> 
+</body>
+</html>

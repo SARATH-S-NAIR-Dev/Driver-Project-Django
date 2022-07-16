@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivo Seeker Profile</title>
+    {% include "Seeker/Links.html" %}
+</head>
+<body>
+    {% include "Seeker/Header.html" %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+        <tr>
+            <td>User</td>
+            <td>Start Date</td>
+            <td>Start Time</td>
+            <td>End Date</td>
+            <td>End Time</td>
+            <td>Minimum Amount</td>
+            <td>VehicleModel</td>
+            <td>Purpose</td>
+            <td>Actual Amount</td>
+            <td>Work Completion Remarks</td>
+            <td>More Info</td>
+            <td colspan="2">Action</td>
+            
+        </tr>
+        
+        {% for data in longdrive %}
+        <tr>
+            <td>{{data.UserID.UserName}},                                        
+                {{data.UserID.UserPhone}},
+                {{data.UserID.UserEmail}}
+            </td>
+            <td>{{data.LongDriveStartDate}}</td>
+            <td>{{data.LongDriveStartTime}}</td>
+            <td>{{data.LongDriveEndDate}}</td>
+            <td>{{data.LongDriveEndTime}}</td>
+            <td>{{data.LongDriveBookingAmount}}</td>
+            <td>{{data.LongDriveVehicleModel}}</td>
+            <td>{{data.LongDrivePurpose}}</td>
+            <td>{{ data.actualtotalamount }}</td>
+            <td>{{ data.workcompletionremarks }}</td>
+            <td>{{data.moreinfo}}</td>
+            {% if data.Status == 0 %}
+            <td><a href="{% url 'seeker:accept-longdrive' data.id %}">Accept</a></td>
+            {% elif data.Status == 2 %}
+            <td>No Action</td>
+            {% else %}
+            <td><span class="link-success">Accepted</span></td>
+            <td><a href="{% url 'seeker:longdrive-completed' data.id %}">Drive Complete ??</a></td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+    </table>   
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% include "Seeker/Footer.html" %}
+</body>
+</html>

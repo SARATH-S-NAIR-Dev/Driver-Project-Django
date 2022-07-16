@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+    {% csrf_token %}
+
+        <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+            <tr>
+                <td>Vehicle Type</td>
+                <td><select name="slctVehicle" id="">
+                    <option value="">---Select---</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Vehicle Model</td>
+                <td><select name="slctModel" id="">
+                    <option value="">---Select---</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Driving Mode</td>
+                <td><select name="slctMode" id="">
+                    <option value="">---Select---</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>District</td>
+                <td><select name="slctDistrict" id="">
+                    <option value="">---Select---</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Booking Date</td>
+                <td><input type="date" name="txtDate" id=""></td>
+            </tr>
+            <tr>
+                <td>Booking Time</td>
+                <td><input type="time" name="txtTime" id=""></td>
+            </tr>
+            <tr>
+                <td>How many Days</td>
+                <td><select name="slctDays" id="">
+                    <option value="">---Select---</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

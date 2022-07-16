@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    {% include "User/Links.html" %}
+</head>
+<body>
+    {% include "User/Header.html" %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+        <tr>
+            <th>Driver</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Total Amount</th>
+            <th>Pick Time</th>
+            <th>Drop Time</th>
+            
+            <th>VehicleModel</th>
+            <th>Purpose</th>
+            <th>Days</th>
+            <th></th>
+        </tr>
+        
+        {% for data in packages %}
+        <tr>
+            <td>{{data.SeekerPackage.SeekerID.SeekerName}},
+                {{data.SeekerPackage.SeekerID.SeekerPhone}},
+                {{data.SeekerPackage.SeekerID.SeekerEmail}}
+            </td>
+            <td>{{data.Fromdate}}</td>
+            <td>{{data.Todate}}</td>
+            <td>{{data.TotalAmount}}</td>
+            <td>{{data.Picktime}}</td>
+            <td>{{data.Droptime}}</td>
+            <td>{{data.Vehiclemodel}}</td>
+            <td>{{data.Purpose}}</td>
+            <td>{{data.Day}}</td>
+            {% if data.Status == 0 %}
+            <td>Not Accepted</td>
+            {% else %}
+            <td>Accepted</td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+    </table>   
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    {% include "User/Footer.html" %}
+</body>
+</html>

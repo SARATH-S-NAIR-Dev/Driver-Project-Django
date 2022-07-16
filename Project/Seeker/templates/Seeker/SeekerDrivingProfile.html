@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include "Seeker/Links.html" %}
+</head>
+<body>
+    {% include "Seeker/Header.html" %}
+    <form action="" method="post">
+    {% csrf_token %}
+
+        <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+            <tr>
+                <td>Vehicle Type</td>
+                <td><select name="slctVehicle" id="">
+                    <option value="">---Select---</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Vehicle Model</td>
+                <td><select name="slctModel" id="">
+                    <option value="">---Select---</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Driving Mode</td>
+                <td><input type="radio" name="rdbAutomatic" id="">Automatic
+                    <input type="radio" name="rdbManual" id="">Manual
+                    <input type="radio" name="rdbBothmodes" id="">Both</td>
+            </tr>
+            <tr>
+                <td>Driving Hours</td>
+                <td><input type="radio" name="rdbDay" id="">Day
+                    <input type="radio" name="rdbNight" id="">Night
+                    <input type="radio" name="rdbBothhours" id="">Both</td>
+            </tr>
+            <tr>
+                <td>Weekdays willing to Work</td>
+                <td><input type="checkbox" name="chkSunday" id="">Sunday
+                    <input type="checkbox" name="chkMonday" id="">Monday
+                    <input type="checkbox" name="chkTuesday" id="">Tuesday
+                    <input type="checkbox" name="chkWednesday" id="">Wednesday
+                    <input type="checkbox" name="chkThursday" id="">Thursday
+                    <input type="checkbox" name="chkFriday" id="">Friday
+                    <input type="checkbox" name="chkSaturday" id="">Saturday</td>
+            </tr>
+        </table><br>
+        <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+            <tr>
+                <td colspan="2"><input type="radio" name="rdbShortdrive" id="">Short Drive
+                <input type="radio" name="rdbLongdrive" id="">Long Drive
+                <input type="radio" name="rdbPackage" id="">Package</td>
+            </tr>
+        </table>
+    </form>
+
+    <br><br><br><br><br><br><br><br><br><br>
+    {% include "Seeker/Footer.html" %}
+</body>
+</html>

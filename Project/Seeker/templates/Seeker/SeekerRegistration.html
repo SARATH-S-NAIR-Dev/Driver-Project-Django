@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivo Seeker Profile</title>
+    {% include "Seeker/Links.html" %}
+</head>
+<body>
+    {% include "Seeker/Header.html" %}
+    <br>
+    <br>
+    <br>
+    <br>
+   
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+        <tr>
+            <td>Enter License Number</td>
+            <td><input type="text" name="txtLicense"></td>
+            <td><input type="file" name="fileLicense" id=""></td>
+        </tr>
+        <tr>
+            <td>Enter Aadhar Number</td>
+            <td><input type="text" name="txtAadhar" id=""></td>
+            <td><input type="file" name="fileAadhar" id=""></td>
+        </tr>
+        <tr>
+            <td>Eye Test Proof</td>
+            <td><input type="file" name="fileEyeTest" id=""></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><textarea name="txtAddress" id="" cols="30" rows="10"></textarea></td>
+        </tr>
+        <tr>
+            <td>Do you have any disbility</td>
+            <td><input type="radio" name="txtDisability" value="Yes">Yes
+                <input type="radio" name="txtDisability" value="No">No</td>
+            <td><input type="file" name="fileDisability" id=""></td>
+        </tr>
+        <tr>
+            <td>Do you have any badge license</td>
+            <td><input type="radio" name="txtBadge" value="Yes">Yes
+                <input type="radio" name="txtBadge" value="No">No</td>
+            <td><input type="file" name="fileBadge" id=""></td>
+        </tr>
+        <tr>
+            <td>Do you have any pending criminal offence</td>
+            <td><input type="radio" name="txtOffence" value="Yes">Yes
+                <input type="radio" name="txtOffence" value="No">No</td>
+        </tr>
+        <tr>
+            <td>Do you have any restrictions placed on your license</td>
+            <td><input type="radio" name="txtRestrictions" value="Yes">Yes
+                <input type="radio" name="txtRestrictions" value="No">No</td>
+        </tr>
+        <tr><td><input type="submit" value="Next" class="btn-outline-danger"></td></tr>
+    </table>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% include "Seeker/Footer.html" %}
+</body>
+</html>

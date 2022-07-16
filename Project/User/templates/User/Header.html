@@ -1,0 +1,85 @@
+{% load static %}
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container-fluid">
+                <div class="header_bottom_border">
+                    <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo">
+                                <a href="{% url  'user:user-homepage'  %}">
+                                    <!-- <img src="{% static 'others/img/logo.png' %}" alt=""> -->
+                                    <h2><span style="color: red;">F</span>ind <span style="color: red;">D</span>rivo</h2>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a class="active" href="{% url  'user:user-homepage'  %}">home</a></li>
+                                        <!-- <li><a href="{% url 'guest:guest-newuser' %}">New Driver</a></li>
+                                        <li><a class="" href="{% url 'guest:guest-newuser' %}">New User</a> -->
+                                        <li><a href="#">Privacy <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                    <li><a href="{% url  'user:user-viewprofile' %}">View Profile</a></li>
+                                                    <li><a href="{% url  'user:user-editprofile' %}">Edit Profile</a></li>
+                                                    <li><a href="{% url  'user:user-changepassword' %}">Changepassword</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Find Your Divos <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a href="{% url  'user:search-short-drive' %}">Short Drive</a></li>
+                                                <li><a href="{% url  'user:search-long-drive' %}">Long Drive</a></li>
+                                                <li><a href="{% url  'user:search-package' %}">Package</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Booked Drivers<i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a href="{% url 'user:short-drive-booked' %}">Short Drivers</a></li>
+                                                <li><a href="{% url 'user:long-drive-booked' %}">Long Drivers</a></li>
+                                                <li><a href="{% url 'user:package-booked' %}">Package Drivers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="{% url  'user:user-complaint' %}">Complaint Box</a></li>
+                                        
+                                       
+                                        
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 d-none d-lg-block">
+                            <div class="social_wrap d-flex align-items-center justify-content-end">
+                                <div class="number">
+                                    <li><a href="{% url 'guest:guest-landingpage' %}">Sign out</a></li>
+                                </div>
+                                <div class="social_links d-none d-xl-block">
+                                    <ul>
+                                        <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
+                                        <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
+                                        <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
+                                        <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="seach_icon">
+                            <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-end -->
+
+<!-- slider_area_start -->
+<div class="slider_area">

@@ -1,0 +1,189 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Short Drive Profile</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>  
+
+
+
+</head>
+
+<body>
+    
+
+    <form action="" method="post">
+        {% csrf_token %}     
+    </form>
+    <br><br>
+    <form action="" method="post" enctype="multipart/form-data" id="LongDriveForm" data-vehicle-url="{% url 'seeker:ajax_load_vehmodel' %}" 
+     novalidate>
+        {% csrf_token %}   
+        <table class="table table-bordered">
+            <tr>
+                <td>Vehicle Type</td>
+                <td>
+                    <select class="form-control" name="vehtype[]"  multiple="multiple" id="vehtype-list">
+                      
+                        {% for data in vehicletype %}
+                        <option value="{{data.id}}">{{data}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Vehicle model</td>
+                <td>
+                    <select class="form-control" name="vehmodel-list[]" multiple="multiple" id="vehmodel-list">
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Driving Mode</td>
+                <td><select name="drivemode" id="drivemode" class="form-control">
+                    <option value="">---Select---</option>
+                    {% for data in drivemode %}
+                    <option value="{{data.id}}">{{data}}</option>
+                    {% endfor %}
+                </select></td>
+
+            </tr>
+            <tr>
+                <td>Driving Hours</td>
+                <td><select name="drivehrs" id="drivehrs" class="form-control">
+                    <option value="">---Select---</option>
+                    {% for data in drivehrs %}
+                    <option value="{{data.id}}">{{data}}</option>
+                    {% endfor %}
+                </select></td>
+
+            </tr>
+
+            <tr>
+                <td>Working Days</td>
+                <td>
+                    {% for data in workday %}
+                    <input type="checkbox" class="custom-control-label" name="chk"  value="{{data.id}}">{{data}}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>Purpose</td>
+                <td>
+                    {% for data in shortpurpose %}
+                    <input type="checkbox" class="custom-control-label" name="purpose_list"  value="{{data.id}}">{{data}}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>Amount</td>
+                <td><input type="amount" name="amount" class="form-control"></td>
+            </tr>
+
+            <tr>
+                <td colspan="3" align="center"><input type="submit" value="Save" class="btn btn-primary"></td>
+            </tr>
+        </table>     
+    </form>
+
+    <br><br>
+    <hr>
+    <table class="table table-bordered">
+        <tr>
+            <th>Driver Name</th>
+            <th>Vehicle Model</th>
+            <th>Driving Mode</th>
+            <th>Driving Hours</th>
+            <th>Working Days</th>
+            <th>Purpose</th>
+            <!-- <th>Eligibility</th> -->
+            <th>Amount</th>
+        </tr>
+        {% for data in shortdrive %}
+        <tr>
+         
+            
+            <td>{{ data.SeekerID.SeekerName }}</td>
+            <td> 
+                {% for x in data.shortdrivevehiclemodels_set.all %}
+                    {% if forloop.last %}
+                        {{x.VehicleModel}}
+                    {% else %}
+                        {{x.VehicleModel}},
+                    {% endif %}
+               
+                {% endfor %}
+            </td>
+            
+            <td>{{data.ShortDriveDrivingMode}}</td>
+            <td>{{data.ShortDriveDrivingHours}}</td>
+
+            <td> 
+                {% for x in data.shortdriveworkingdays_set.all %}
+                    {% if forloop.last %}
+                        {{x.WorkingDays}}
+                    {% else %}
+                        {{x.WorkingDays}},
+                    {% endif %}
+                {% endfor %}
+            </td>
+            
+            
+            
+            <td>
+                {% for x in data.shortdrivepurposes_set.all %}
+                    {% if forloop.last %}
+                        {{x.Purposes}}
+                    {% else %}
+                        {{x.Purposes}},
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <!-- <td>{{data.LongDriveEligibility}}</td> -->
+            <td>{{data.ShortDriveAmount}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+
+<script>
+    $("#vehtype-list").change(function () {
+        $('#vehmodel-list').html('');
+        $('#vehmodel-list').multiselect('rebuild');
+        var str='';
+        var vechileTypeLists=document.getElementById('vehtype-list')
+        for (i=0;i< vechileTypeLists.length;i++) { 
+            if(vechileTypeLists[i].selected){
+                str +=vechileTypeLists[i].value; 
+            }
+        } 
+    	var url = $("#LongDriveForm").attr("data-vehicle-url");  
+        var vehicletypeId = $(this).val(); 
+        $.ajax({                      
+            url: url,                  
+            data: {'vehtype': str  }, 
+            success: function (data) {   
+            $("#vehmodel-list").html(data);  
+            $('#vehmodel-list').multiselect('rebuild');
+            }
+        });
+
+});
+    
+</script>
+<script type="text/javascript">
+    $('#vehtype-list').multiselect();
+</script>
+
+
+</body>
+</html>

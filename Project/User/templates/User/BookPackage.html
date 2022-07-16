@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include "User/Links.html" %}
+</head>
+<body>
+    {% include "User/Header.html" %}
+    <br>
+    <br>
+    <table align="center" cellpadding="10" width="50%" border="1" style="border-collapse:collapse;">
+        <tr>
+            <th colspan="2" align="center">Package Details</th>
+        </tr>
+        <tr>
+            <td>Driving Mode</td>
+            <td>{{package.PackageDrivingMode}}</td>
+        </tr>
+        <tr>
+            <td>Driving Hours</td>
+            <td>{{package.PackageDrivingHours}}</td>
+        </tr>
+        <tr>
+            <td>Package Eligibility</td>
+            <td>{{package.PackageEligibility}}</td>
+        </tr>
+        <tr>
+            <td>Package Amount</td>
+            <td>{{package.PackageAmount}}</td>
+        </tr>
+        <tr>
+            <td>Workdays</td>
+            <td>
+                {% for data in workdays %}
+                    {{data.WorkingDays}},
+                {% endfor %}
+                
+            </td>
+        </tr>
+        <tr>
+            <td>Vehicle Models</td>
+            <td>
+                {% for data in models %}
+                    {{data.VehicleModel}},
+                {% endfor %}
+                
+            </td>
+        </tr>
+        <tr>
+            <td>Package Purposes</td>
+            <td>
+                {% for data in purposes %}
+                    {{data.Purposes}},
+                {% endfor %}
+                
+            </td>
+
+        </tr>
+       
+    </table>
+
+    <br>
+    <table align="center" cellpadding="10" width="50%" border="1" style="border-collapse:collapse;">
+        <tr>
+            <th colspan="2" align="center">Driver Details</th>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{package.SeekerID.SeekerName}}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>{{package.SeekerID.SeekerGender}}</td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>{{package.SeekerID.SeekerPhone}}</td>
+        </tr>
+        <tr>
+            <td>Package Amount</td>
+            <td>{{package.SeekerID.SeekerEmail}}</td>
+        </tr>
+        <tr>
+            <td>District</td>
+            <td>{{package.SeekerID.District}}</td>
+        </tr>
+    </table>
+    
+    <br>
+
+    <form action="" method="post">
+        {% csrf_token %}  
+        <table align="center" cellpadding="10" width="50%" border="1" style="border-collapse:collapse;">
+         <tr>
+             <th align="cetner" colspan="4">Your RequireMents</th>
+         </tr>
+        <tr>
+            <td>From Date</td>
+            <td><input type="date" name="txtFromDate"></td>
+        </tr>
+        <tr>
+            <td>To Date</td>
+            <td><input type="date" name="txtToDate"></td>
+        </tr>
+
+        <tr>
+            <td>Pick Time</td>
+            <td><input type="time" name="txtPicktime"></td>
+        </tr>
+        <tr>
+            <td>Drop Time</td>
+            <td><input type="time" name="txtDroptime"></td>
+        </tr>
+
+        <tr>
+            <td>Model</td>
+            <td><select name="txtVehiclemodel">
+                    <option value="">---Select---</option>
+                    {% for data in models %}
+                    <option value="{{data.VehicleModel}}">{{data.VehicleModel}}</option>
+                    {% endfor %}
+                </select></td>
+            
+        </tr>
+
+        <tr>
+            <td>Purpose</td>
+            <td><select name="txtPurpose">
+                    <option value="">---Select---</option>
+                    {% for data in purposes %}
+                    <option value="{{data.Purposes}}">{{data.Purposes}}</option>
+                    {% endfor %}
+                </select></td>
+            
+        </tr>
+
+        <tr>
+            <td>Day</td>
+            <td>
+                <input type="radio" name="rdbDay" value="Day">Day
+                <input type="radio" name="rdbDay" value="Night">Night
+                <input type="radio" name="rdbDay" value="Both">Both
+            
+            </td>
+           
+        </tr>
+
+        <tr>
+            <td>More Info</td>
+            <td>
+                <textarea name="txtDescription" cols="60" rows="5"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center"><button type="submit" name="btnbook">Book Package</button></td>
+        </tr>
+    </table>
+    </form>
+
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    {% include "User/Footer.html" %}
+    
+</body>
+</html>

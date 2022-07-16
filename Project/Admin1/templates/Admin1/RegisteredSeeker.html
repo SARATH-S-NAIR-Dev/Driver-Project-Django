@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+        <h3>SEEKERS</h3>
+        <tr>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>GENDER</th>
+            <th>DISTRICT</th>
+            <th>PHONE</th>
+            <th>EMAIL</th>
+            <th>PERSONAL STATUS</th>
+            <th>TEST STATUS</th>
+        </tr>
+        {% for data in seekerData %}
+        <tr>
+            <td>{{ data.SeekerName }}</td>
+            <td>{{ data.SeekerDob }}</td>
+            <td>{{ data.SeekerGender }}</td>
+            <td>{{ data.District }}</td>
+            <td>{{ data.SeekerPhone }}</td>
+            <td>{{ data.SeekerEmail }}</td>
+            {% if data.PersonaldataStatus == '1' %}
+                
+                <td><a href="{% url 'webadmin:view-registration-data' data.id %}">YES And Verify Now</a></td>
+            
+            {% elif data.PersonaldataStatus == '2'  %}
+                
+                <td>Verification Completed</td>
+            
+            {% else %}
+                
+                <td>Not Filled Yet</td>
+            
+            {% endif %}
+            
+            {% if data.TestdataStatus == '1' %}
+
+                <td><a href="{% url 'webadmin:view-test-data' data.id %}">YES And Verify Now</a></td>
+
+            {% elif data.PersonaldataStatus == '2'  %}
+                
+                <td>Verification Completed</td>
+
+            {% else  %}
+
+                <td>Not Filled Yet</td>
+                
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    {% include "User/Links.html" %}
+</head>
+<body>
+    {% include "User/Header.html" %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+        <tr>
+            <td>Driver</td>
+            <td>District</td>
+            <td>Location</td>
+            <td>Start Date</td>
+            <td>Start Time</td>
+            <td>End Date</td>
+            <td>End Time</td>
+            <td>Booking Amount</td>
+            <td>More info</td>
+            <td>Actual total amount</td>
+            <td>work completion remarks</td>
+            <td>VehicleModel</td>
+            <td>Purpose</td>
+            
+        </tr>
+    
+        {% for data in shortdrive %}
+        <tr>
+            <td>{{data.SeekerLongdrive.SeekerID.SeekerName}},                                        
+                {{data.SeekerLongdrive.SeekerID.SeekerPhone}},
+                {{data.SeekerLongdrive.SeekerID.SeekerEmail}}
+            </td>
+            <td>{{data.LongDriveDistrictID}}</td>
+            <td>{{data.LongDriveLocation}}</td>
+            <td>{{data.LongDriveStartDate}}</td>
+            <td>{{data.LongDriveStartTime}}</td>
+            <td>{{data.LongDriveEndDate}}</td>
+            <td>{{data.LongDriveEndTime}}</td>
+            <td>{{data.LongDriveBookingAmount}}</td>
+            <td>{{data.moreinfo}}</td>
+            <td>{{data.actualtotalamount}}</td>
+            <td>{{data.workcompletionremarks}}</td>
+            <td>{{data.LongDriveVehicleModel}}</td>
+            <td>{{data.LongDrivePurpose}}</td>
+            {% if data.Status == 0 %}
+            <td>Not Accepted</td>
+            {% else %}
+            <td>Accepted</td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+    </table>   
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    
+
+{% include "User/Footer.html" %}
+    
+</body>
+</html>

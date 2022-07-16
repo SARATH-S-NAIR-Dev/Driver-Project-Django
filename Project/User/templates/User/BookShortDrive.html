@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include "User/Links.html" %}
+</head>
+<body>
+    {% include "User/Header.html" %}
+    <br>
+    <br>
+    <table align="center" cellpadding="10" width="50%" border="1" style="border-collapse:collapse;">
+        <tr>
+            <th colspan="2" align="center">Short Drive Details</th>
+        </tr>
+        <tr>
+            <td>Driving Mode</td>
+            <td>{{shortdrive.ShortDriveDrivingMode}}</td>
+        </tr>
+        <tr>
+            <td>Driving Hours</td>
+            <td>{{shortdrive.ShortDriveDrivingHours}}</td>
+        </tr>
+        <tr>
+            <td>Shortdrive Eligibility</td>
+            <td>{{shortdrive.ShortDriveEligibility}}</td>
+        </tr>
+        <tr>
+            <td>Shortdrive Amount</td>
+            <td>{{shortdrive.ShortDriveAmount}} <span>(Minimum Amount)</span></td>
+        </tr>
+        <tr>
+            <td>Workdays</td>
+            <td>
+                {% for data in workdays %}
+                    {{data.WorkingDays}},
+                {% endfor %}
+                
+            </td>
+        </tr>
+        <tr>
+            <td>Vehicle Models</td>
+            <td>
+                {% for data in models %}
+                    {{data.VehicleModel}},
+                {% endfor %}
+                
+            </td>
+        </tr>
+        <tr>
+            <td>Package Purposes</td>
+            <td>
+                {% for data in purposes %}
+                    {{data.Purposes}},
+                {% endfor %}
+                
+            </td>
+
+        </tr>
+       
+    </table>
+
+    <br>
+    <table align="center" cellpadding="10" width="50%" border="1" style="border-collapse:collapse;">
+        <tr>
+            <th colspan="2" align="center">Driver Details</th>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{shortdrive.SeekerID.SeekerName}}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>{{shortdrive.SeekerID.SeekerGender}}</td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>{{shortdrive.SeekerID.SeekerPhone}}</td>
+        </tr>
+        <tr>
+            <td>District</td>
+            <td>{{shortdrive.SeekerID.District}}</td>
+        </tr>
+    </table>
+    
+    <br>
+
+    <form action="" method="post">
+        {% csrf_token %}  
+        <table align="center" cellpadding="10" width="50%" border="1" style="border-collapse:collapse;">
+         <tr>
+             <th align="cetner" colspan="4">Your RequireMents</th>
+         </tr>
+        <tr>
+            <td>Date</td>
+            <td><input type="date" name="txtDate"></td>
+        </tr>
+        
+
+        <tr>
+            <td>Pick Time</td>
+            <td><input type="time" name="txtPicktime"></td>
+        </tr>
+        <tr>
+            <td>Drop Time</td>
+            <td><input type="time" name="txtDroptime"></td>
+        </tr>
+        <tr>
+            <td>Pick Location</td>
+            <td><input type="text" name="txtPickLocation"></td>
+        </tr>
+        <tr>
+            <td>Drop Location</td>
+            <td><input type="text" name="txtDropLocation"></td>
+        </tr>
+
+        <tr>
+            <td>Model</td>
+            <td><select name="txtVehiclemodel">
+                    <option value="">---Select---</option>
+                    {% for data in models %}
+                    <option value="{{data.VehicleModel}}">{{data.VehicleModel}}</option>
+                    {% endfor %}
+                </select></td>
+            
+        </tr>
+
+        <tr>
+            <td>Purpose</td>
+            <td><select name="txtPurpose">
+                    <option value="">---Seect---</option>
+                    {% for data in purposes %}
+                    <option value="{{data.Purposes}}">{{data.Purposes}}</option>
+                    {% endfor %}
+                </select></td>
+            
+        </tr>
+
+        <tr>
+            <td>Is Return</td>
+            <td><input type="checkbox" name="chkreturn" value="Yes">Yes
+                <input type="checkbox" name="chkreturn" value="No">No</td>
+        </tr>
+        <tr>
+            <td>More Info</td>
+            <td>
+                <textarea name="txtDescription" cols="60" rows="5"></textarea>
+            </td>
+        </tr>
+        <tr>
+        <tr>
+            <td colspan="4" align="center"><button type="submit" name="btnbook">Book ShortDrive</button></td>
+        </tr>
+    </table>
+    </form>
+
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    {% include "User/Footer.html" %}
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drivo Seeker Profile</title>
+    {% include "Seeker/Links.html" %}
+</head>
+<body>
+    {% include "Seeker/Header.html" %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <table align="center" border="1" cellpadding="10" style="border-collapse: collapse;">
+        <tr>
+            <th>User</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Total Amount</th>
+            <th>Pick Time</th>
+            <th>Drop Time</th>
+            
+            <th>VehicleModel</th>
+            <th>Purpose</th>
+            <th>Days</th>
+            <th>More Info</th>
+            <th>Action</th>
+        </tr>
+        
+        {% for data in packages %}
+        <tr>
+            <td>{{data.UserID.UserName}},
+                {{data.UserID.UserPhone}},
+                {{data.UserID.UserEmail}}
+            </td>
+            <td>{{data.Fromdate}}</td>
+            <td>{{data.Todate}}</td>
+            <td>{{data.TotalAmount}}</td>
+            <td>{{data.Picktime}}</td>
+            <td>{{data.Droptime}}</td>
+            <td>{{data.Vehiclemodel}}</td>
+            <td>{{data.Purpose}}</td>
+            <td>{{data.Day}}</td>
+            <td>{{data.moreinfo}}</td>
+            {% if data.Status == 0 %}
+            <td><a class="link-100 info" href="{% url 'seeker:accept-package' data.id %}">Accept</a></td>
+            {% else %}
+            <td><span class="link-700 info-border">Accepted</span></td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+    </table>   
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% include "Seeker/Footer.html" %}
+</body>
+</html>
